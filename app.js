@@ -116,7 +116,7 @@ app.use((err, req, res, next) => {
 });
 
 // Start the server
-const PORT = process.env.PORT || 8080; // Port number for the server
+const PORT = 8080; // Port number for the server
 connectToMongoDB().then(() => {
     app.listen(PORT, () => {
         console.log(`Server is listening on port ${PORT}`);
