@@ -1,0 +1,120 @@
+<!-- Navigation Bar -->
+<nav class="border-bottom bg-light sticky-top del-opacity d-flex justify-content-between align-items-center">
+  <!-- Logo and brand name -->
+  <div class="d-flex justify-content-between align-items-center">
+    <a class="disabled-element material-symbols-outlined doodle" href="/listings">home_app_logo</a>
+    <a class="nav-link disabled-element" href="/listings"><b>DoodleNest</b></a>
+  </div>
+
+  <!-- Search bar -->
+  <div class="s-bar">
+    <!-- Search form -->
+    <form class="d-flex" role="search" method="POST" action="/listings/search" onsubmit="return validateSearchForm()">
+      <!-- Search input field -->
+      <input class="form-control me-2" type="search" id="searchInput" name="search" placeholder="Search" aria-label="Search">
+      <!-- Search button -->
+      <button class="btn" type="submit" id="searchButton">
+        <span class="material-symbols-outlined">search</span>
+      </button>
+    </form>
+  </div>
+
+  <!-- User actions and menu -->
+  <div class="d-flex justify-content-between align-items-center">
+    <!-- New listing icon -->
+    <a class="menu-icon menu-hide bg-dark fa-solid fa-circle-plus disabled-element" href="/listings/new"></a>
+
+    <!-- User authentication links -->
+    <% if(!currUser) { %>
+      <!-- Sign up link -->
+      <a class="nav-icon menu-hide disabled-element" href="/signup"><i class="fa-solid fa-user-plus"></i></a>
+      <!-- Login link -->
+      <a class="nav-icon menu-hidden" href="/login"><i class="fa-solid fa-right-to-bracket"></i></a>
+    <% } else { %>
+      <!-- User profile icon -->
+      <a class="menu-icon menu-hidden disabled-element fa-solid fa-circle-user" href="/profile"></a>
+    <% } %>
+  </div>
+</nav>
+
+<!-- Search error messages -->
+<div class="s-alert d-flex flex-column justify-content-center align-items-center">
+  <!-- Empty search field message -->
+  <p class="search_empty">Search field is empty or missing.</p>
+  <!-- Invalid characters in search field message -->
+  <p class="search_p">Search field contains invalid characters. Remove specials.</p>
+</div>
+
+<!-- Responsive menu icons -->
+<div class="menu">
+  <!-- New listing icon -->
+  <a class="menu-icon menu-icon-drop bg-dark fa-solid fa-circle-plus disabled-element" href="/listings/new"></a>
+  <% if(!currUser) { %>
+    <!-- Sign up icon -->
+    <a class="menu-icon menu-icon-drop disabled-element fa-solid fa-user-plus" href="/signup"></a>
+    <!-- Login icon -->
+    <a class="menu-icon menu-icon-drop disabled-element fa-solid fa-right-to-bracket" href="/login"></a>
+  <% } else { %>
+    <!-- User profile icon -->
+    <a class="menu-icon menu-icon-drop disabled-element fa-solid fa-circle-user" href="/profile"></a>
+  <% } %>
+  <!-- Drop-down menu icon -->
+  <a class="menu-icon disabled-element fa-solid fa-circle-chevron-down" id="menu-icon" style="rotate: 90deg;"></a>
+</div>
+
+<!-- JavaScript for menu and search functionality -->
+<script>
+// MENU RESPONSIVE BTN FEATURE
+const menuIcon = document.getElementById('menu-icon');
+const menuIconDrops = document.querySelectorAll('.menu-icon-drop');
+const menu = document.querySelector(".menu")
+
+menuIcon.addEventListener("click", function () {
+  menuIconDrops.forEach(element => {
+    if (element.style.display === "inline-block") {
+      element.style.display = "none";
+      menu.style.backgroundColor = "Transparent"
+      menuIcon.style.rotate = "90deg"
+    } else {
+      element.style.display = "inline-block";
+      menu.style.backgroundColor = "#000"
+      menuIcon.style.rotate = "-90deg"
+    }
+  });
+});
+
+// SEARCH FUNCTIONALITY
+const searchInput = document.getElementById('searchInput');
+const errorMessage = document.getElementById('error-message');
+const element = document.querySelector(".search_p");
+const element_empty = document.querySelector(".search_empty");
+const searchButton = document.getElementById('searchButton'); // Assuming the button has an ID "searchButton"
+searchButton.disabled = true;
+
+document.addEventListener("DOMContentLoaded", function () {
+  const searchQuery = "<%= typeof searchQuery !== 'undefined' ? searchQuery : 'undefined' %>";
+
+  if (searchQuery !== "undefined") {
+    searchInput.value = searchQuery;
+  } else {
+    searchInput.placeholder = "Search";
+  }
+});
+
+searchInput.addEventListener('input', function () {
+  const inputValue = searchInput.value;
+  const pattern = /^[a-zA-Z0-9\s-]*$/;
+  if (!inputValue || inputValue.trim() === "") {
+    searchButton.disabled = true;
+    element_empty.style.display = "inline-block";
+  } else if (!pattern.test(inputValue)) {
+    element.style.display = "inline-block";
+    searchButton.disabled = true;
+    element_empty.style.display = "none";
+  } else {
+    element.style.display = "none";
+    element_empty.style.display = "none";
+    searchButton.disabled = false;
+  }
+});
+</script>

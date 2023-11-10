@@ -1,0 +1,41 @@
+<% layout('/layouts/boilerplate') -%>
+
+<div class="row-3 col-10 offset-1 col-sm-8 offset-sm-2 col-md-10 offset-md-1 col-lg-6 offset-lg-3 mt-5">
+    
+    <!-- Warning Message -->
+    <div class="warning-message" style="display: flex; align-items: center; justify-content: center;">
+        <p style="width: 100%; text-align: center; color: #FE424D;">
+            <strong>Warning:</strong> If you DELETE your account, all your Nests and Reviews will be permanently deleted, and this action cannot be undone.
+        </p>
+    </div>
+
+    <!-- Delete Account Form -->
+    <h2>Delete Account</h2>
+    <form method="POST" action="/users/<%= user._id %>?_method=DELETE" class="needs-validation" novalidate>
+
+        <!-- Password Input -->
+        <div class="mb-3 col-md-12 mt-4">
+            <label for="password" class="form-label">*Password</label>
+            <input type="password" name="password" id="password" class="form-control input" placeholder="Enter your password" required>
+            <div class="invalid-feedback">
+                Please enter the password.
+            </div>
+        </div>
+
+        <!-- Delete Button -->
+        <div class="col-12 d-flex justify-content-end">
+            <button id="loadBtn" class="btn btn-primary d-flex gap-2 align-items-center">
+                <b>Delete Account</b>
+                <div class="loading-indicator" style="display: none;">
+                    <div class="spinner-border text-light" style="width: 20px !important; height: 20px !important;" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+            </button>
+        </div>
+
+    </form>
+</div>
+
+<!-- Include form.js -->
+<script src="/JS/form.js"></script>

@@ -1,0 +1,127 @@
+<% layout('/layouts/boilerplate') -%>
+
+<!-- Main Content -->
+<br><br>
+<div class="row col-12">
+    <h3>Edit your Nest</h3>
+
+    <!-- Edit Listing Form -->
+    <form style="padding-right: 0;" method="POST" action="/listings/<%= list._id %>?_method=PUT"
+        class="needs-validation" novalidate enctype="multipart/form-data">
+
+        <!-- Title Input -->
+        <div class="row">
+            <div class="mb-3 col-md-12">
+                <label for="title" class="form-label">*Title</label>
+                <input class="form-control input" type="text" name="listing[title]" value="<%= list.title %>"
+                    required>
+                <div class="valid-feedback">
+                    Title Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please enter title.
+                </div>
+            </div>
+        </div>
+
+        <!-- Description Textarea -->
+        <div class="row">
+            <div class="mb-3 col-md-12">
+                <label for="description" class="form-label">Description</label>
+                <textarea class="form-control input" rows="5" cols="25" name="listing[description]"
+                    required><%= list.description %></textarea>
+                <div class="invalid-feedback">
+                    description required.
+                </div>
+            </div>
+        </div>
+
+        <!-- Picture Preview -->
+        <h4>Picture Preview</h4>
+        <div class="mb-3">
+            <img id="image-preview" src="<%= list.image.url %>" alt="Listing_image">
+        </div>
+
+        <!-- Image Upload and Category Selection -->
+        <div class="row">
+            <div class="mb-3 col-md-8">
+                <label for="image" class="form-label">Upload New Image</label>
+                <input class="form-control input" id="image" type="file" name="listing[image]" accept="image/*"
+                    onchange="previewImage(event)">
+            </div>
+            <div class="mb-3 col-md-4">
+                <label for="category" class="form-label">Select Category</label>
+                <select class="form-select input" name="listing[category]" aria-label="Default select example"
+                    required>
+                    <!-- Category Options -->
+                    <option value="<%= list.category %>" selected><%= list.category %></option>
+                    <option value="Eco">Eco</option>
+                    <option value="Rooms">Rooms</option>
+                    <option value="Cabin">Cabin</option>
+                    <option value="Mountains">Mountains</option>
+                    <option value="Farms">Farms</option>
+                    <option value="Amazing-pools">Amazing pools</option>
+                    <option value="Villa">Villa</option>
+                    <option value="Farms">Lakefront</option>
+                    <option value="Islands">Islands</option>
+                    <option value="Beachfront">Beachfront</option>
+                    <option value="Downtown">Downtown</option>
+                    <option value="Treehouse">Treehouse</option>
+                    <option value="Luxe">Luxe</option>
+                    <option value="City">City</option>
+                    <option value="Iconic-cities">Iconic cities</option>
+                    <option value="Tiny-homes">Tiny homes</option>
+                    <option value="Normal">Normal</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Price and Country Inputs -->
+        <div class="row">
+            <div class="mb-3 col-md-4">
+                <label for="price" class="form-label">*Price</label>
+                <input class="form-control input" type="number" name="listing[price]" value="<%= list.price %>"
+                    required>
+                <div class="invalid-feedback">
+                    Please enter a valid price.
+                </div>
+            </div>
+            <div class="mb-3 col-md-8">
+                <label for="country" class="form-label">Country</label>
+                <input class="form-control input" type="text" name="listing[country]" value="<%= list.country %>"
+                    required>
+                <div class="invalid-feedback">
+                    Please enter the country name.
+                </div>
+            </div>
+        </div>
+
+        <!-- Location Input -->
+        <div class="row">
+            <div class="mb-3 col-md-12">
+                <label for="location" class="form-label">Location</label>
+                <input class="form-control input" type="text" name="listing[location]" value="<%= list.location %>"
+                    required>
+                <div class="invalid-feedback">
+                    Please enter location.
+                </div>
+            </div>
+        </div>
+
+        <!-- Submit Button -->
+        <br><br>
+        <div class="col-12 d-flex justify-content-end">
+            <button id="loadBtn" class="btn btn-primary d-flex gap-2 align-items-center"><b>Edit</b> <div
+                    class="loading-indicator" style="display: none;">
+                    <div class="spinner-border text-light" style="width: 20px !important; height: 20px !important;"
+                        role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div></button>
+        </div>
+        <br><br><br><br>
+    </form>
+</div>
+
+<!-- Include Custom JS -->
+<script src="/JS/form.js"></script>

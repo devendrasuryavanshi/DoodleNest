@@ -1,0 +1,47 @@
+<% layout('/layouts/boilerplate') -%>
+
+<div class="row-3 col-10 offset-1 col-sm-8 offset-sm-2 col-md-10 offset-md-1 col-lg-6 offset-lg-3 mt-5">
+
+    <!-- Login Heading -->
+    <h1>Login</h1>
+
+    <!-- Login Form -->
+    <form action="/login" method="POST" class="needs-validation" novalidate>
+
+        <!-- Username Input -->
+        <div class="mb-3 col-md-12 mt-5">
+            <label for="username" class="form-label">*Username</label>
+            <input type="text" name="username" id="username" class="form-control input" placeholder="Enter your username" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+            <div class="invalid-feedback">
+                Please enter Username.
+            </div>
+
+            <!-- Password Input -->
+            <label for="password" class="form-label mt-4">*Password</label>
+            <input type="password" name="password" id="password" class="form-control input" placeholder="Enter your password" required>
+            <div class="invalid-feedback">
+                Please enter the password.
+            </div>
+        </div>
+
+        <!-- Login Button -->
+        <div class="col-12 d-flex justify-content-end">
+            <button id="loadBtn" class="btn btn-primary d-flex gap-2 align-items-center">
+                <b>Login</b>
+                <div class="loading-indicator" style="display: none;">
+                    <div class="spinner-border text-light" style="width: 20px !important; height: 20px !important;" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+            </button>
+        </div>
+
+    </form>
+
+</div>
+
+<!-- Include form.js -->
+<script src="/JS/form.js"></script>

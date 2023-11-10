@@ -1,0 +1,118 @@
+<% layout('/layouts/boilerplate') -%>
+<script type='text/javascript' src='http://www.bing.com/api/maps/mapcontrol?callback=GetMap' async defer></script>
+<br><br>
+<div class="row col-12">
+    <!-- Heading for New Nest Creation -->
+    <h3>Create a new Nest</h3>
+    
+    <!-- Form for New Listing -->
+    <form style="padding-right: 0;" method="POST" action="/listings" class="needs-validation" novalidate enctype="multipart/form-data">
+        
+        <!-- Title Input -->
+        <div class="row">
+            <div class="mb-3 col-md-12">
+                <label for="title" class="form-label">*Title</label>
+                <input type="text" name="listing[title]" placeholder="Add a catchy title" class="form-control input" required>
+                <div class="valid-feedback">
+                    Title Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please enter title.
+                </div>
+            </div>
+        </div>
+        
+        <!-- Description Textarea -->
+        <div class="row">
+            <div class="mb-3 col-md-12">
+                <label for="description" class="form-label">Description</label>
+                <textarea class="form-control input" name="listing[description]" required></textarea>
+                <div class="invalid-feedback">
+                    description required.
+                </div>
+            </div>
+        </div>
+        
+        <!-- Picture Preview Section -->
+        <h4>Picture Preview</h4>
+        <div class="mb-3">
+            <img id="image-preview" src="https://res.cloudinary.com/dritgy42i/image/upload/v1698682025/wnaderlust_DEV/il1mp8ahoodughzyqjh0.jpg" alt="img_preview" accept="image/*" onchange="previewImage(event)">
+        </div>
+        
+        <!-- Image Upload and Category Selection -->
+        <div class="row">
+            <!-- Image Upload -->
+            <div class="mb-3 col-md-8">
+                <label for="image" class="form-label">Upload Listing Image</label>
+                <input class="form-control input" id="image" type="file" name="listing[image]" accept="image/*" onchange="previewImage(event)" required>
+            </div>
+            
+            <!-- Category Selection -->
+            <div class="mb-3 col-md-4">
+                <label for="category" class="form-label">Select Category</label>
+                <select class="form-select input" name="listing[category]" aria-label="Default select example" required>
+                    <option value="" disabled selected>Select an option</option>
+                    <option value="Eco">Eco</option>
+                    <option value="Rooms">Rooms</option>
+                    <option value="Cabin">Cabin</option>
+                    <option value="Mountains">Mountains</option>
+                    <option value="Farms">Farms</option>
+                    <option value="Amazing-pools">Amazing pools</option>
+                    <option value="Villa">Villa</option>
+                    <option value="Farms">Lakefront</option>
+                    <option value="Islands">Islands</option>
+                    <option value="Beachfront">Beachfront</option>
+                    <option value="Downtown">Downtown</option>
+                    <option value="Treehouse">Treehouse</option>
+                    <option value="Luxe">Luxe</option>
+                    <option value="City">City</option>
+                    <option value="Iconic-cities">Iconic cities</option>
+                    <option value="Tiny-homes">Tiny homes</option>
+                    <option value="Normal">Normal</option>
+                </select>
+            </div>
+        </div>
+        
+        <!-- Price, Country, and Location Inputs -->
+        <div class="row">
+            <div class="mb-3 col-md-4">
+                <label for="price" class="form-label">*Price</label>
+                <input class="form-control input" type="number"  name="listing[price]" placeholder="&#8377;0,000" required>
+                <div class="invalid-feedback">
+                    Please enter a valid price.
+                </div>
+            </div>
+            <div class="mb-3 col-md-8">
+                <label for="country" class="form-label">Country</label>
+                <input class="form-control input" type="text" name="listing[country]" placeholder="India" required>
+                <div class="invalid-feedback">
+                    Please enter the country name.
+                </div>
+            </div>
+        </div>
+        
+        <!-- Location Input -->
+        <div class="row">
+            <div class="mb-3 col-md-12">
+                <label for="location" class="form-label">Location</label>
+                <input class="form-control input" type="text" name="listing[location]" placeholder="Town/City" required>
+                <div class="invalid-feedback">
+                    Please enter location.
+                </div>
+            </div>
+        </div>
+        
+        <!-- Create Button -->
+        <div class="col-12 d-flex justify-content-end">
+            <button id="loadBtn" class="btn btn btn-dark d-flex gap-2 align-items-center"><b>Create</b> <div class="loading-indicator" style="display: none;">
+                <div class="spinner-border text-light" style="width: 20px !important; height: 20px !important;" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div></button>
+        </div>
+        <br><br>
+    </form>
+</div>
+
+<!-- Include Form.js -->
+<script src="/JS/form.js"></script>

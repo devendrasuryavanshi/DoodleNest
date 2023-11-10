@@ -1,0 +1,86 @@
+<% layout('/layouts/boilerplate') -%> 
+
+<div style="overflow: hidden;">
+
+  <!-- Top Bar with Currency Toggle, Logout, and Delete Account -->
+  <div id="top-bar">
+    <div>
+      <div class="tax_toggle">
+        <div class="form-check-reverse form-switch cursor">
+          <input class="form-check-input cursor" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+          <label class="form-check-label cursor" for="flexSwitchCheckDefault">
+            <span class="material-symbols-outlined">
+              currency_exchange
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+    <div style="display: flex;">
+      <a class="btn-icon-a" href="/logout"><i class="fa-solid fa-right-from-bracket"></i></a>
+      <form class="show-form" method="get" action="/users">
+        <button class="btn-icon"><i class="fa-solid fa-user-slash"></i></button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Greeting Section -->
+  <div style="display: inline-block;">
+    <div class="greet">
+      <p>Hello, </p> <b><%= user.username %></b>
+    </div>
+  </div>
+
+  <!-- Displaying User's Nests -->
+  <% if (!allListings.length <= 0) { %>
+    <h2 style="text-align: center; margin: 20px 0;"><b>All Your Nests</b></h2>
+    <div class="row row-cols-xl-4 row-cols-md-3 row-cols-sm-2 row-cols-1">
+      <% for (Listing of allListings) { %>
+        <a href="/listings/<%= Listing._id %>" class="card_link">
+          <div class="card listing-card">
+            <!-- Listing Image -->
+            <img src="<%= Listing.image.url %>" class="card-img-top" id="index-image" alt="Listing_image">
+            
+            <!-- Listing Details -->
+            <div class="card-body profile-card-body" style="color: black !important;">
+              <div>
+                <!-- Listing Title -->
+                <h5 class="card-title">
+                  <b><%= Listing.title %></b>
+                </h5>
+                
+                <!-- Listing Price -->
+                <p class="card-price" style="display: none;"><%= Listing.price %></p>
+                <p class="card-gst" style="display: none;"><%= Listing.gst %></p>
+                <p style="display: inline-block;" class="card-price-view">₹<%= (parseInt(Listing.price) + parseInt(Listing.gst)).toLocaleString("en-IN") %>/night <sup> (incl. 18% GST)</p>
+              </div>
+              
+              <!-- Edit and Delete Buttons for the Listing Owner -->
+              <div>
+                <div style="display: flex;">
+                  <form method="GET" action="/listings/<%= Listing._id %>/edit">
+                    <button class="profile-ed" disabled-element>
+                      <span class="material-symbols-outlined">
+                        edit
+                      </span>
+                    </button>
+                  </form>
+                  <form method="POST" action="/listings/<%= Listing._id %>?_method=DELETE">
+                    <button class="profile-del">
+                      <span class="material-symbols-outlined">
+                        delete
+                      </span>
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+      <% } %>
+    </div>
+  <% } else { %>
+    <!-- Display Message if User has No Nests -->
+    <img class="empty" src="https://res.cloudinary.com/dritgy42i/image/upload/v1699336336/wnaderlust_DEV/cfu9x4v944ezznazezqi.png" alt="">
+  <% } %>
+</div>

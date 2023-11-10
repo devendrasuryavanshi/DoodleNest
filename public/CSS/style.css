@@ -1,0 +1,801 @@
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    flex: 1;
+    min-height: 90vh;
+}
+
+/* _____________________________________________________________________________ */
+
+/* LISTINGS */
+
+/* INDEX PAGE */
+
+#index-image {
+    width: 100% !important;
+}
+
+@media (min-width: 40px) and (max-width: 575px) {
+    #index-image {
+        height: 69vw !important;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+    #index-image {
+        height: 185px !important;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    #index-image {
+        height: 161px !important;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    #index-image {
+        height: 222px !important;
+    }
+}
+
+@media (min-width: 1200px) {
+    #index-image {
+        height: 196px !important;
+    }
+}
+
+/* _________________________________________ */
+
+/* INDEX > CATEGORY */
+
+.filters {
+    overflow-x: auto;
+    white-space: nowrap;
+    gap: 30px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 10px;
+}
+
+.filter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.7;
+    font-weight: 900;
+}
+.filter p {
+    font-size: 0.8rem;
+}
+
+.filter:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.filter_icon {
+    text-decoration: none;
+    color: #000;
+    font-size: 30px;
+    font-variation-settings:'FILL' 0, 'wght' 100, 'GRAD' -25, 'opsz' 48
+}
+
+/* _________________________________________ */
+
+/* NEW PAGE */
+
+.btn {
+    color: #fff;
+    background-color: #fe424d !important;
+    border: none !important;
+}
+
+.mb-3 {
+    padding-right: 0 !important;
+}
+
+/* _________________________________________ */
+
+/* EDIT and NEW PAGE */
+
+#image-preview {
+    border-radius: 30px;
+    object-fit: cover;
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+    #image-preview {
+        width: 60vw;
+        height: 33.75vw; /* To maintain a 16:9 aspect ratio */
+    }
+}
+
+@media (min-width: 768px) {
+    #image-preview {
+        width: 50vw;
+        height: 28.125vw;
+    }
+}
+
+@media (max-width: 575px) {
+    #image-preview {
+        width: 80vw;
+        height: 45vw;
+    }
+}
+
+/* _________________________________________ */
+
+/* SHOW PAGE */
+
+.show-body {
+    padding-left: 0 !important;
+}
+
+.show-body h5 {
+    border-radius: 30px;
+    padding: 8px;
+    background-color: antiquewhite;
+    display: inline-block;
+}
+
+.bold {
+    font-size: 2rem;
+}
+
+.show-form {
+    display: inline-block;
+    height: 80%;
+}
+
+.show-form-ed {
+    display: inline-block;
+    margin-right: 20px;
+    margin-top: .5rem;
+}
+
+.show-div {
+    display: inline-block;
+}
+
+/* show */
+.show-ed, .del {
+    border: none;
+    width: 5rem;
+    height: 2.7rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+}
+
+.show-image {
+    border: none !important;
+    width: 64vw;
+    height: 36vw !important;
+}
+
+@media (min-width: 40px) and (max-width: 399px) {
+    .show-image {
+        width: 87vw ;
+        height: 48vw !important;
+    }
+}
+
+@media (min-width: 400px) and (max-width: 574px) {
+    .show-image {
+        width: 90vw ;
+        height: 50vw !important;
+    }
+}
+
+@media (min-width: 575px) and (max-width: 768px) {
+    .show-image {
+        width: 80vw;
+        height: 45vw !important;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .show-image {
+        width: 70vw;
+        height: 39.375vw !important;
+    }
+}
+
+@media (min-width: 1025px) and (max-width: 1440px) {
+    .show-image {
+        width: 60vw;
+        height: 33.75vw !important;
+    }
+}
+
+@media (min-width: 1441px) {
+    .show-image {
+        width: 50vw;
+        height: 28.125vw !important;
+    }
+}
+
+.show-main-div {
+    width: 100%; 
+    padding-right: 0 !important;
+}
+
+.review-del {
+    border-radius: 50%;
+    background-color: #000;
+    color: #fff;
+    text-decoration: none;
+    padding: 7.5px;
+}
+
+.opacity_el {
+    opacity: .2 !important;
+}
+
+/* _________________________________________ */
+
+/* DELETE POPUP */
+
+.del_div {
+    position: fixed;
+    top: calc(50% - 120px); /* Adjust this value as needed */
+    left: calc(45% - 15vw); /* Adjust this value as needed */
+    width: 40vw;
+    background-color: #ebebeb;
+    color: #000;
+    border-radius: 20px;
+    visibility: hidden;
+    text-align: center;
+    z-index: 10;
+    padding: 10px;
+}
+
+@media (min-width: 40px) and (max-width: 399px) {
+    .del_div {
+        width: 90vw;
+        left: calc(30% - 25vw);
+    }
+}
+
+@media (min-width: 400px) and (max-width: 574px) {
+    .del_div {
+        width: 80vw;
+        left: calc(35% - 25vw);
+    }
+}
+
+@media (min-width: 575px) and (max-width: 768px) {
+    .del_div {
+        width: 70vw;
+        left: calc(40% - 25vw);
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .del_div {
+        width: 60vw;
+        left: calc(40% - 22vw);
+    }
+}
+
+@media (min-width: 1025px) and (max-width: 1440px) {
+    .del_div {
+        width: 50vw;
+        left: calc(50% - 25vw);
+    }
+}
+
+.del-txt {
+    font-size: 1.25rem;
+    font-weight: 900;
+}
+
+.del_btn {
+    display: inline-block;
+    background-color: #fe424d;
+    border: none;
+    border-radius: 20px;
+    margin: 5px 0;
+}
+
+.del {
+    background-color: #fe424d;
+    margin-top: .5rem;
+    width: 6rem;
+    height: 2.7rem;
+}
+
+.cancel {
+    display: inline-block;
+    background-color: #000;
+    border: none;
+    border-radius: 20px;
+    margin: 0 10px 0 0;
+}
+
+/* _________________________________________ */
+
+/* PROFILE PAGE */
+
+#top-bar a {
+    color: #fe424d;
+    text-decoration: none;
+}
+
+#top-bar {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.profile-ed, .profile-del {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center !important;
+    border: none;
+}
+
+.profile-del {
+    background-color: #fe424d;
+    margin-left: 20px;
+}
+
+.profile-card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 200px;
+}
+
+.btn-icon, .btn-icon-a {
+    font-size: 20px;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #fe424d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.btn-icon-a {
+    background-color: #000;
+    margin-right: 10px;
+}
+
+.btn-icon i {
+    color: #fff;
+}
+
+.greet {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row !important;
+    font-size: 25px;
+    font-weight: bolder;
+    background-color: antiquewhite;
+    border-radius: 40px;
+}
+
+.greet p {
+    padding: 5px 5px 5px 10px;
+    margin: 0;
+}
+
+.greet b {
+    background-color: #000;
+    color: antiquewhite;
+    padding: 5px 10px;
+    border-radius: 50px;
+}
+
+/* _____________________________________________________________________________ */
+
+/* FLASH */
+
+/* flash Message */
+.flashMsg {
+    z-index: 20;
+    position: absolute !important;
+    left: 30vw !important;
+    width: 40vw !important;
+    margin: 0 !important;
+}
+
+/* autoDismissAlert */
+.autoDismissAlert {
+    display: none;
+}
+
+/* _________________________________________ */
+
+/* NAVBAR */
+
+.sticky-top {
+    height: 70px;
+    gap: 10px;
+}
+
+.s-bar {
+    min-width: 160px;
+    width:  60vw;
+
+}
+
+#searchInput {
+    border-radius: 30px;
+
+}
+
+#searchButton {
+    width: 37.6px !important;
+    font-weight: bolder;
+    color: #fff;
+    border-radius: 50% !important;
+    background-color: #000000 !important;
+    display: flex;
+    justify-content: center;
+    font-weight: bolder;
+
+}
+
+.search_empty, .search_p {
+    display: none;
+    height: 17px;
+    margin: 0;
+    padding: 0;
+    color: red;
+    font-size: 12px;
+    text-align: center;
+    z-index: 7 !important;
+}
+
+.collapse {
+    height: 50px !important;
+}
+
+.navbar {
+    height: 5rem;
+    background-color: #fff;
+}
+
+.doodle {
+    color: #fe424d;
+    font-size: 3rem;
+    text-decoration: none;
+}
+
+.nav-link {
+    color: #222 !important;
+    font-size: 1.5rem !important;
+}
+
+.menu {
+    height: 60px !important;
+    position: fixed;
+    top: 5px;
+    right: 0;
+    height: 50px;
+    z-index: 2000;
+    padding: 0 5px;
+    border-radius: 30px;
+    display: none;
+}
+
+
+
+.menu-icon {
+    width: 40px;
+    font-size: 1.5rem;
+    background-color: #fe424d;
+    color: #fff;
+    padding: 8px;
+    text-decoration: none;
+    border-radius: 50%;
+    margin: 10px 5px;
+}
+
+.menu-icon-drop {
+    display: none;
+    transition: all 3s ease;
+}
+
+
+@media (min-width: 40px) and (max-width: 500px) {
+    .nav-link {
+        display: none !important;
+    }
+
+    .menu-hide {
+        display: none !important;
+    }
+
+    .menu-hidden {
+        visibility: hidden;
+    }
+
+    .menu {
+        display: inline-block;
+    }
+}
+
+.nav-icon {
+    background-color: #fe424d;
+    font-size: 1.2rem;
+    color: #fff;
+    padding: 5px;
+    margin-right: 5px;
+    border-radius: 50%;
+    width: 40px;
+    text-align: center;
+}
+
+/* _________________________________________ */
+
+/* FOOTER */
+
+.f_info_links a {
+    text-decoration: none;
+    color: #222;
+    margin: .5rem;
+}
+
+.f_info_links a:hover {
+    text-decoration: underline;
+}
+
+.f_info {
+    text-align: center;
+    display: flex;
+    height: 8rem;
+    background-color: #ebebeb;
+    flex-wrap: wrap;
+    justify-content: center;    
+    align-items: space-evenly;
+}
+
+.f_info_links, .f_info_socials, .f_info_brand{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.f_info_socials i {
+    margin: .5rem;
+    font-size: 1.2rem;
+}
+
+/* _____________________________________________________________________________ */
+
+button {
+    background-color: #000;
+    color: #fff;
+    border-radius: 20px;
+    margin-left: 20px;
+    padding: 5px 15px;
+}
+
+.btns {
+    margin-bottom: 10px;
+}
+
+/* Cards */
+
+/* profile and index */
+.listing-card {
+    border: none !important;
+    margin-bottom: 2rem;
+}
+
+/* show, profile and index */
+.card-img-top {
+    border-radius: 30px !important;
+    width: 100% !important;
+    height: 100%;
+    object-fit: cover !important;
+}
+
+.card_body {
+    padding: 0 !important;
+}
+
+.card_body p {
+    font-weight: 400 !important;
+}
+.card_link {
+    text-decoration: none;
+}
+
+/* card effect */
+
+.card-img-overlay {
+    opacity: 0;
+}
+
+.card-img-overlay:hover {
+    opacity: .2;
+    background-color: #fff;
+}
+
+/* show */
+.cursor {
+    cursor: pointer;
+}
+
+.selectedFilter, .selectedFilter a {
+    color: #fe424d;
+}
+
+/* index and profole */
+.empty {
+    margin: 15vh 25vw !important;
+    width: 40vw !important;
+}
+
+@media (min-width: 40px) and (max-width: 399px) {
+    .empty {
+        margin: 15vh 5vw !important;
+        width: 90vw !important;
+    }
+}
+
+@media (min-width: 400px) and (max-width: 574px) {
+    .empty {
+        margin: 15vh 8vw !important;
+        width: 80vw !important;
+    }
+}
+
+@media (min-width: 575px) and (max-width: 768px) {
+    .empty {
+        margin: 15vh 8vw !important;
+        width: 70vw !important;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .empty {
+        margin: 15vh 10vw !important;
+        width: 60vw !important;
+    }
+}
+
+@media (min-width: 1025px) and (max-width: 1440px) {
+    .empty {
+        margin: 15vh 20vw !important;
+        width: 50vw !important;
+    }
+}
+
+@media (min-width: 1441px) {
+    .empty {
+        margin: 15vh 10vw !important;
+        width: 60vw !important;
+    }
+}
+
+/* _____________________________________________________________________________ */
+
+/* TAX TOGGLE */
+
+.tax_toggle {
+    width: 5rem !important;
+    border: .1vw solid #555;
+    padding: 5px;
+    padding-bottom: 0;
+    border-radius: 15px;
+    font-weight: 900;
+    margin-bottom: 1vw;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+}
+
+/* _____________________________________________________________________________ */
+
+/* MAP */
+
+#myMap {
+    width: 64vw;
+    height: 36vw;
+    border-radius: 30px !important;
+    border: .1vw solid #000;
+    overflow: hidden;
+    animation: fade 2s linear;
+}
+@media (min-width: 40px) and (max-width: 399px) {
+    #myMap {
+        width: 87vw ;
+        height: 48vw !important;
+    }
+}
+        
+@media (min-width: 400px) and (max-width: 574px) {
+    #myMap {
+        width: 90vw ;
+        height: 50vw !important;
+    }
+}
+        
+@media (min-width: 575px) and (max-width: 768px) {
+    #myMap {
+        width: 80vw;
+        height: 45vw !important;
+    }
+}
+       
+@media (min-width: 769px) and (max-width: 1024px) {
+    #myMap {
+        width: 70vw;
+        height: 39.375vw !important;
+    }
+}
+        
+@media (min-width: 1025px) and (max-width: 1440px) {
+    #myMap {
+        width: 60vw;
+        height: 33.75vw !important;
+    }
+}
+        
+@media (min-width: 1441px) {
+    #myMap {
+        width: 50vw;
+        height: 28.125vw !important;
+    }
+}
+
+@keyframes fade {
+    0% {
+        opacity: 0;
+    }
+    80% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+
+/* _____________________________________________________________________________ */
+
+
+/* SCROLL */
+
+::-webkit-scrollbar {
+    width: 6px; /* Change the width of the vertical scrollbar */
+    height: 6px; /* Change the height of the horizontal scrollbar */
+  }
+  
+  /* Track (the area where the scrollbar moves) */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Change the background color of the track */
+  }
+  
+  /* Thumb (the draggable part of the scrollbar) */
+  ::-webkit-scrollbar-thumb {
+    background: #888; /* Change the color of the thumb */
+    border-radius: 3px; /* Add rounded corners to the thumb */
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Change the color of the thumb on hover */
+  }
+  
+/* _____________________________________________________________________________ */

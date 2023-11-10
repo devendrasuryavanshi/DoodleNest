@@ -1,0 +1,172 @@
+<% layout('/layouts/boilerplate') -%> 
+
+<div class="d-flex justify-content-between align-items-center gap-3 mb-4">
+  <!-- Filters Section -->
+  <div class="filters d-flex justify-content-between align-items-center">
+    <!-- Filter for Trending -->
+    <div class="filter Trending">
+      <a class="material-symbols-outlined filter_icon" href="/listings/category?q=Trending">
+        local_fire_department
+      </a>
+      <p>Trending</p>
+    </div>
+    <div class="filter Eco">
+      <a class="material-symbols-outlined filter_icon" href="/listings/category?q=Eco">
+        eco
+      </a>
+      <p>Eco</p>
+    </div>
+    <div class="filter Rooms">
+      <a class="material-symbols-outlined filter_icon" href="/listings/category?q=Rooms">
+        single_bed
+      </a>
+      <p>Rooms</p>
+    </div>
+    <div class="filter Cabin">
+      <a class="material-symbols-outlined filter_icon" href="/listings/category?q=Cabin">
+        cabin
+      </a>
+      <p>Cabin</p>
+    </div>
+    <div class="filter Mountains">
+      <a class="material-symbols-outlined filter_icon" href="/listings/category?q=Mountains">
+        landscape
+      </a>
+      <p>Mountains</p>
+    </div>
+    <div class="filter Farms">
+      <a class="material-symbols-outlined filter_icon" href="/listings/category?q=Farms">
+        holiday_village
+      </a>
+      <p>Farms</p>
+    </div>
+    <div class="filter Amazing-pools">
+      <a class="material-symbols-outlined filter_icon" href="/listings/category?q=Amazing-pools">
+        Pool
+      </a>
+      <p>Amazing pools</p>
+    </div>
+    <div class="filter Villa">
+      <a class="material-symbols-outlined filter_icon" href="/listings/category?q=Villa">
+        Villa
+      </a>
+      <p>Villa</p>
+    </div>
+    <div class="filter Lakefront">
+      <a class="material-symbols-outlined filter_icon" href="/listings/category?q=Lakefront">
+        water
+      </a>
+      <p>Lakefront</p>
+    </div>
+    <div class="filter Islands">
+      <a class="material-symbols-outlined filter_icon" href="/listings/category?q=Islands">
+        nature_people
+      </a>
+      <p>Islands</p>
+    </div>
+    <div class="filter Beachfront">
+      <a class="material-symbols-outlined filter_icon" href="/listings/category?q=Beachfront">
+        beach_access
+      </a>
+      <p>Beachfront</p>
+    </div>
+    <div class="filter Downtown">
+      <a class="material-symbols-outlined filter_icon" href="/listings/category?q=Downtown">
+        location_city
+      </a>
+      <p>Downtown</p>
+    </div>
+    <div class="filter Treehouse">
+      <a class="material-symbols-outlined filter_icon" href="/listings/category?q=Treehouse">
+       home_and_garden
+      </a>
+      <p>Treehouse</p>
+    </div>
+    <div class="filter Luxe">
+      <a class="material-symbols-outlined filter_icon" href="/listings/category?q=Luxe">
+        spa
+      </a>
+      <p>Luxe</p>
+    </div>
+    <div class="filter City">
+      <a class="material-symbols-outlined filter_icon" href="/listings/category?q=City">
+        apartment
+      </a>
+      <p>City</p>
+    </div>
+    <div class="filter Iconic-cities">
+      <a class="material-symbols-outlined filter_icon" href="/listings/category?q=Iconic-cities">
+        meeting_room
+      </a>
+      <p>Iconic cities</p>
+    </div>
+    <div class="filter Tiny-homes">
+      <a class="material-symbols-outlined filter_icon" href="/listings/category?q=Tiny-homes">
+        house
+      </a>
+      <p>Tiny homes</p>
+    </div>
+    <div class="filter Normal">
+      <a class="material-symbols-outlined filter_icon" href="/listings/category?q=Normal">
+        hotel
+      </a>
+      <p>Normal</p>
+    </div>
+  </div>
+  
+  <!-- Toggle for Tax Display -->
+  <div class="tax_toggle" style="height: 35px;">
+    <div class="form-check-reverse form-switch cursor">
+      <input class="form-check-input cursor" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+      <label class="form-check-label cursor" for="flexSwitchCheckDefault">
+        <span class="material-symbols-outlined">
+          currency_exchange
+        </span>
+      </label>
+    </div>
+  </div>
+</div>
+
+<!-- Listings Section -->
+<div class="row row-cols-xl-4 row-cols-md-3 row-cols-sm-2 row-cols-1">
+  <% if (!allListings.length <= 0) { %>
+    <% if (query === "search") { %>
+      <!-- Search Result Header -->
+      <div class="row-1 mb-4" style="width: 100%;">
+        <h3>Search Result For: <%= typeof searchQuery !== 'undefined' ? searchQuery : 'Not available' %></h3>
+      </div>
+    <% } %>
+    <!-- Display Listings -->
+    <% for (Listing of allListings) { %>
+      <a href="/listings/<%= Listing._id %>" class="card_link">
+        <div class="card col listing-card">
+          <img src="<%= Listing.image.url %>" class="card-img-top" id="index-image" alt="Listing_image">
+          <div class="card-body">
+            <h5 class="card-title">
+              <b><%= Listing.title %></b>
+            </h5>
+            <p class="card-price" style="display: none;"><%= Listing.price %></p>
+            <p class="card-gst" style="display: none;"><%= Listing.gst %></p>
+            <p class="card-price-view">₹<%= (parseInt(Listing.price) + parseInt(Listing.gst)).toLocaleString("en-IN") %>/night <sup> (incl. 18% GST)</p>
+          </div>
+        </div>
+      </a>
+    <% } %>
+  <% } else if (query === "search") { %>
+    <!-- Display Empty Search Result Image -->
+    <img class="empty" src="https://res.cloudinary.com/dritgy42i/image/upload/v1699093799/wnaderlust_DEV/s4inn9wpo2um3unbol8s.png" alt="empty">
+  <% } else { %>
+    <!-- Display Empty Listings Image -->
+    <img class="empty" src="https://res.cloudinary.com/dritgy42i/image/upload/v1699075618/wnaderlust_DEV/x5scg7lx3sxcnwbx1t7h.png" alt="empty">
+  <% } %>
+</div>
+
+<!-- Script to Highlight Selected Category -->
+<script>
+  let selectedCategory = "<%= query %>"
+  // Find the element with the class "Eco"
+  let Element = document.querySelector("."+selectedCategory);
+
+  // Add the "selectedFilter" class to the element
+  Element.classList.add('selectedFilter');
+</script>
