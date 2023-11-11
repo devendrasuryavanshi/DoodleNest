@@ -28,8 +28,11 @@ loadBtn.addEventListener('click', async (e) => {
   const isInputEmpty = Array.from(inputFields).some(input => input.value.trim() === '');
 
   if (!isInputEmpty) {
-    // Show the loading indicator and hide the button
-    loadingIndicator.style.display = 'block';
+    setTimeout(() => {
+      // Disable the button and show the loading indicator
+      loadBtn.setAttribute('disabled', true);
+      loadingIndicator.style.display = 'inline-block';
+    }, 10);
   }
 });
 

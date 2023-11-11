@@ -410,9 +410,15 @@ body {
 .flashMsg {
     z-index: 20;
     position: absolute !important;
-    left: 30vw !important;
-    width: 40vw !important;
+    left: 5vw !important;
+    width: 90vw !important;
     margin: 0 !important;
+    padding: 10px !important;
+    padding-right: 30px !important;
+}
+
+.btn-close {
+    padding: 15px !important;
 }
 
 /* autoDismissAlert */

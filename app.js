@@ -103,6 +103,11 @@ app.use("/listings", listingsRouter); // Use listings router for '/listings' pat
 app.use("/listings/:id/reviews", reviewsRouter); // Use reviews router for '/listings/:id/reviews' path
 app.use("/", userRouter); // Use user router for '/' path
 
+// Redirect to Home page for Render 
+app.get("/", (req, res) => {
+    res.redirect("/listings")
+})
+
 // Error handling
 app.all("*", (req, res, next) => {
     // Handle 404 errors

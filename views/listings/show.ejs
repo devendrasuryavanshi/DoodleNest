@@ -107,11 +107,17 @@
                 <!-- Comment Input -->
                 <div>
                     <label for="comment" class="form-label">Comment</label>
-                    <textarea required class="form-control disabled-element" name="review[comment]" id="comment" cols="30" rows="5"></textarea>
+                    <textarea required class="form-control disabled-element input" name="review[comment]" id="comment" cols="30" rows="5"></textarea>
                     <div class="invalid-feedback">add comment</div>
                 </div>
                 <br>
-                <button class="show-ed disabled-element">Submit</button>
+                <button id="loadBtn" class="show-ed disabled-element"><b>Submit</b> <div
+                    class="loading-indicator" style="display: none;">
+                    <div class="spinner-border text-light" style="width: 20px !important; height: 20px !important;"
+                        role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div></button>
                 <br>
             </form>
             <hr>
@@ -155,3 +161,6 @@
 
 <!-- Include Show.js -->
 <script src="/JS/show.js"></script>
+
+<!-- Include Feature.js -->
+<script src="/JS/feature.js"></script>
